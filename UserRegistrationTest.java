@@ -1,5 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationTest {
@@ -22,6 +24,13 @@ public class UserRegistrationTest {
     public void Email_Check() {
         UserRegistration userRegistration = new UserRegistration();
         boolean result = userRegistration.email(Pattern.compile("^[0-9a-z]+[@][a-z]+[.]{1}[a-z]{2,}"),"vai123@gmail.com");
+        Assert.assertEquals(true,result);
+    }
+
+    @Test
+    public void Mobile_Number_Check() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean result = userRegistration.mobileNumber(Pattern.compile("^[0-9]{2}[ ][0-9]{10}"),"91 1234567890");
         Assert.assertEquals(true,result);
     }
 }
