@@ -37,7 +37,7 @@ public class UserRegistrationTest {
     @Test
     public void Password_Check() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.password(Pattern.compile("(?=.*[A-Z].*)(?=.*[0-9].*)[A-Za-z0-9]{8,}"),"AbCd1234");
+        boolean result = userRegistration.password(Pattern.compile("(?=.*[A-Z].*)(?=.*[0-9].*)([a-zA-Z0-9]{4,}[!@#$%^&*()_+][a-zA-Z0-9]{3,})"),"AbCd@1234");
         Assert.assertEquals(true,result);
     }
 }
