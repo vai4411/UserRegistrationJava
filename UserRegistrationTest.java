@@ -23,7 +23,7 @@ public class UserRegistrationTest {
     @Test
     public void Email_Check() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.email(Pattern.compile("^[0-9a-z]+[@][a-z]+[.][a-z]{2,}"),"vai123@gmail.com");
+        boolean result = userRegistration.email(Pattern.compile("^[0-9a-z]+[+_.-]?[0-9a-z]+[@][a-z]+[.][a-z]{2,}[.]?[a-z]+$"),"abc.100@abc.com.au");
         Assert.assertEquals(true,result);
     }
 
