@@ -33,4 +33,11 @@ public class UserRegistrationTest {
         boolean result = userRegistration.mobileNumber(Pattern.compile("^[0-9]{2}[ ][0-9]{10}"),"91 1234567890");
         Assert.assertEquals(true,result);
     }
+
+    @Test
+    public void Password_Check() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean result = userRegistration.password(Pattern.compile("^[A-Za-z0-9]{8,}"),"aBcD1234");
+        Assert.assertEquals(true,result);
+    }
 }

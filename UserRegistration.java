@@ -20,4 +20,8 @@ public class UserRegistration {
     public boolean mobileNumber(Pattern pattern, String number) {
         return pattern.matches(valueOf(pattern),number);
     }
+
+    public boolean password(Pattern pattern, String password) {
+        return pattern.matches(valueOf(pattern),password);
+    }
 }
