@@ -1,43 +1,64 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistrationTest {
+public class userRegistrationTest {
+    private userRegistration userRegistration;
 
-    @Test
-    public void First_Name_Check() {
-        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.firstName(Pattern.compile("^[A-Z][A-Za-z]{2,}"), "Abc");
-        Assert.assertEquals(true,result);
+    @Before
+    public void initialize() {
+        userRegistration = new userRegistration();
     }
 
     @Test
-    public void Last_Name_Check() {
-        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.lastName(Pattern.compile("^[A-Z][A-Za-z]{2,}"),"Def");
-        Assert.assertEquals(true,result);
+    public void firstNameCheckWithFalseCondition() {
+        Assert.assertFalse(userRegistration.firstName("a"));
     }
 
     @Test
-    public void Email_Check() {
-        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.email(Pattern.compile("^[0-9a-z]+[+_.-]?[0-9a-z]+[@][a-z]+[.][a-z]{2,}[.]?[a-z]+$"),"abc.100@abc.com.au");
-        Assert.assertEquals(true,result);
+    public void firstNameCheckWithTrueCondition() {
+        Assert.assertTrue(userRegistration.firstName("Abc"));
     }
 
     @Test
-    public void Mobile_Number_Check() {
-        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.mobileNumber(Pattern.compile("^[0-9]{2}[ ][0-9]{10}"),"91 1234567890");
-        Assert.assertEquals(true,result);
+    public void lastNameCheckWithFalseCondition() {
+        Assert.assertFalse(userRegistration.lastName("def"));
     }
 
     @Test
-    public void Password_Check() {
-        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.password(Pattern.compile("(?=.*[A-Z].*)(?=.*[0-9].*)([a-zA-Z0-9]{4,}[!@#$%^&*()_+][a-zA-Z0-9]{3,})"),"AbCd@1234");
-        Assert.assertEquals(true,result);
+    public void lastNameCheckWithTrueCondition() {
+        Assert.assertTrue(userRegistration.lastName("DEF"));
+    }
+
+    @Test
+    public void emailCheckWithFalseCondition() {
+        Assert.assertFalse(userRegistration.email("abc.123@.gmail.com"));
+    }
+
+    @Test
+    public void emailCheckWithTrueCondition() {
+        Assert.assertTrue(userRegistration.email("abc.1234@gmail.com"));
+    }
+
+    @Test
+    public void mobileNumberCheckWithFalseCondition() {
+        Assert.assertFalse(userRegistration.mobileNumber("919874561230"));
+    }
+
+    @Test
+    public void mobileNumberCheckWithTrueCondition() {
+        Assert.assertTrue(userRegistration.mobileNumber("91 9874561230"));
+    }
+
+    @Test
+    public void passwordCheckWithFalseCondition() {
+        Assert.assertFalse(userRegistration.password("abcd@123"));
+    }
+
+    @Test
+    public void passwordCheckWithTrueCondition() {
+        Assert.assertTrue(userRegistration.password("Abcd@123"));
     }
 }
